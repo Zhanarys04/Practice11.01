@@ -1,0 +1,49 @@
++--------------------------------+
+|            Library             |
++--------------------------------+
+| - Books: List<Book>            |
+| - Users: List<User>            |
+| - Loans: List<Loan>            |
++--------------------------------+
+| + GetBookInfo(isbn: string): string |
+| + RegisterUser(user: User): void    |
+| + GetPopularBooks(): List<Book>    |
++--------------------------------+
+            |
+            |
++-----------+-----------+
+|                       |
+|                       |
++-----------------------+                    +------------------+
+|        Book            |<------------------>|    Author        |
++-----------------------+                    +------------------+
+| - Title: string        |                    | - Name: string    |
+| - ISBN: string         |                    | - BirthDate: DateTime|
+| - Authors: List<Author>|                    +------------------+
+| - PublicationYear: int |
+| - AvailabilityStatus: AvailabilityStatus|
++-----------------------+
+| + ChangeAvailabilityStatus(status: AvailabilityStatus): void |
+| + GetBookInfo(): string |
++-----------------------+
+            |
+            |
+    +--------------------+                 +----------------------+
+    |     Loan           |                 |      User            |
+    +--------------------+                 +----------------------+
+    | - Book: Book       |                 | - Id: int            |
+    | - Reader: Reader   |                 | - Name: string       |
+    | - LoanDate: DateTime|                 | - Email: string      |
+    | - ReturnDate: DateTime|               +----------------------+
+    +--------------------+                 | + Register(): void    |
+    | + IssueLoan(): void |                 | + Login(): void       |
+    | + ReturnBook(): void|                 +----------------------+
+    +--------------------+                          /      \
+            |                                     /        \
++-----------+------------+                +------------------+  +------------------+
+|          Reader        |                |     Librarian     |  |     Report       |
++------------------------+                +------------------+  +------------------+
+| + BorrowBook(book: Book): void |         | + AddBook(book: Book): void | - ReportType: ReportType  |
+| + ReturnBook(book: Book): void |         | + RemoveBook(book: Book): void | - StartDate: DateTime     |
++------------------------+                | + EditBook(book: Book): void | - EndDate: DateTime       |
+                                          +------------------+  +------------------+
